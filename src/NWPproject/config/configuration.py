@@ -1,6 +1,6 @@
 from NWPproject.constants import *
 from NWPproject.utils.common import read_yaml_file, create_directories
-from NWPproject.entity.config_entity import DataIngestionConfig
+from NWPproject.entity.config_entity import DataIngestionConfig, DataValidationConfig
 
 class ConfigurationManager:
     def __init__(
@@ -28,3 +28,16 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+
+    def get_data_validation_config(self) -> DataValidationConfig:
+        config = self.config.data_validation
+
+        create_directories([config.root_dir])
+
+        data_validation_config = DataValidationConfig(
+            root_dir=config.root_dir,
+            Data_path=config.Data_path,
+            STATUS_FILE=config.STATUS_FILE
+        )
+
+        return data_validation_config

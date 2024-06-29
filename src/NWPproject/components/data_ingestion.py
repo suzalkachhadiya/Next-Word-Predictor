@@ -2,7 +2,7 @@ import tkinter as tk
 import os
 from tkinter import filedialog
 import shutil
-from NWPproject.entity.config_entity import DataIngestionConfig
+from NWPproject.entity.config_entity import DataIngestionConfig, DataValidationConfig
 
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):
