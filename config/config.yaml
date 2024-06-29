@@ -13,3 +13,9 @@ data_validation:
 data_transformation:
   root_dir: artifacts/data_transformation
   Data_path: artifacts/data_ingestion/NWP.txt
+
+model_trainer:
+  root_dir: artifacts/model_trainer
+  array_path: artifacts/data_transformation/arrays.npz
+  model_name: model.joblib
+  

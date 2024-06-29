@@ -5,10 +5,10 @@ to_categorical:
   num_classes: 221
 
 LSTM:
-  units: 100
+  units_lstm: 100
 
 Dense:
-  units: 221
+  units_dense: 221
   activation: "softmax"
 
 Embedding:
@@ -19,7 +19,7 @@ Embedding:
 compile:
   loss: "categorical_crossentropy"
   optimizer: "adam"
-  metrics: "['accuracy']"
+  metrics: ['accuracy']
 
 fit:
   epoch: 100

@@ -19,4 +19,19 @@ class DataTransformationConfig:
     root_dir: Path
     Data_path: Path
     padding: str
-    num_classes: int
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    array_path: Path
+    model_name: str
+    units_lstm: int
+    units_dense: int
+    activation: str
+    input_dim: int
+    output_dim: int
+    input_length:int
+    loss: str
+    optimizer: str
+    metrics: list
+    epoch: int

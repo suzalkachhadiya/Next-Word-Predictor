@@ -1,6 +1,6 @@
 from NWPproject.constants import *
 from NWPproject.utils.common import read_yaml_file, create_directories
-from NWPproject.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig
+from NWPproject.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig
 
 class ConfigurationManager:
     def __init__(
@@ -57,3 +57,36 @@ class ConfigurationManager:
         )
 
         return data_transformation_config
+    
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+        units_lstm_params = self.params.LSTM
+        units_dense_params = self.params.Dense
+        activation_params = self.params.Dense
+        input_dim_params = self.params.Embedding
+        output_dim_params = self.params.Embedding
+        input_length_params = self.params.Embedding
+        loss_params = self.params.compile
+        optimizer_params = self.params.compile
+        metrics_params = self.params.compile
+        epoch_params = self.params.fit
+
+        create_directories([config.root_dir])
+
+        model_trainer_config = ModelTrainerConfig(
+            root_dir=config.root_dir,
+            array_path=config.array_path,
+            model_name=config.model_name,
+            units_lstm= units_lstm_params.units_lstm,
+            units_dense = units_dense_params.units_dense,
+            activation = activation_params.activation,
+            input_dim = input_dim_params.input_dim,
+            output_dim = output_dim_params.output_dim,
+            input_length = input_length_params.input_length,
+            loss = loss_params.loss,
+            optimizer = optimizer_params.optimizer,
+            metrics = metrics_params.metrics,
+            epoch = epoch_params.epoch
+        )
+
+        return model_trainer_config
