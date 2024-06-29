@@ -1,3 +1,9 @@
+pad_sequences:
+  padding: "pre"
+
+to_categorical:
+  num_classes: 221
+
 LSTM:
   units: 100
 
@@ -9,9 +15,6 @@ Embedding:
   input_dim: 221
   output_dim: 100
   input_length: 39
-
-to_categorical:
-  num_classes: 221
 
 compile:
   loss: "categorical_crossentropy"

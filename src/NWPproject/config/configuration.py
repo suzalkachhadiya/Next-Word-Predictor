@@ -1,6 +1,6 @@
 from NWPproject.constants import *
 from NWPproject.utils.common import read_yaml_file, create_directories
-from NWPproject.entity.config_entity import DataIngestionConfig, DataValidationConfig
+from NWPproject.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig
 
 class ConfigurationManager:
     def __init__(
@@ -41,3 +41,19 @@ class ConfigurationManager:
         )
 
         return data_validation_config
+    
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+        padding_params=self.params.pad_sequences
+        num_classes_params=self.params.to_categorical
+
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            Data_path=config.Data_path,
+            padding=padding_params.padding,
+            num_classes=num_classes_params.num_classes
+        )
+
+        return data_transformation_config
