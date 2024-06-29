@@ -11,4 +11,5 @@ ensure==1.0.2
 joblib
 types-pyYAML
 streamlit
+tk-tools
 -e .
