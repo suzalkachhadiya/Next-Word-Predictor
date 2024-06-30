@@ -42,5 +42,5 @@ class DataTransformation:
         # print(type(y))
 
         file_path=os.path.join(self.config.root_dir,"arrays.npz")
-        np.savez(file_path, arr1=X, arr2=y)
+        np.savez(file_path, arr1=X, arr2=y, arr3=Y)
         

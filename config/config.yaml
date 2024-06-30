@@ -18,4 +18,10 @@ model_trainer:
   root_dir: artifacts/model_trainer
   array_path: artifacts/data_transformation/arrays.npz
   model_name: model.joblib
+
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  model_path: artifacts/model_trainer/model.joblib
+  array_path: artifacts/data_transformation/arrays.npz
+  metric_file_name: artifacts/model_evaluation/metrcis.json
   

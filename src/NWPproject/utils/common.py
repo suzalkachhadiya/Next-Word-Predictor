@@ -66,6 +66,7 @@ def save_json_file(file_path:Path, data:dict):
     """
     try:
         with open(file_path, 'w') as file:
+            # if data
             json.dump(data, file, indent=4)
         logger.info(f"Data has been saved to {file_path}")
     except Exception as e:

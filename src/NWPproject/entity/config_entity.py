@@ -19,6 +19,7 @@ class DataTransformationConfig:
     root_dir: Path
     Data_path: Path
     padding: str
+    num_classes: int
 
 @dataclass(frozen=True)
 class ModelTrainerConfig:
@@ -35,3 +36,10 @@ class ModelTrainerConfig:
     optimizer: str
     metrics: list
     epoch: int
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: Path
+    model_path: Path
+    array_path: Path
+    metric_file_name: Path

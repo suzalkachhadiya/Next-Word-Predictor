@@ -1,6 +1,6 @@
 from NWPproject.constants import *
 from NWPproject.utils.common import read_yaml_file, create_directories
-from NWPproject.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig
+from NWPproject.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig
 
 class ConfigurationManager:
     def __init__(
@@ -90,3 +90,17 @@ class ConfigurationManager:
         )
 
         return model_trainer_config
+    
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+
+        create_directories([config.root_dir])
+
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir=config.root_dir,
+            model_path = config.model_path,
+            array_path=config.array_path,
+            metric_file_name = config.metric_file_name,           
+        )
+
+        return model_evaluation_config
