@@ -132,3 +132,16 @@ def get_file_size_kb(file_path:Path, min_size=0, max_size=float('inf')):
     except Exception as e:
         logger.info(f"Error checking file size: {e}")
         return False
+    
+def update_nested_yaml(file_path, keys, new_value):
+    with open(file_path, 'r') as file:
+        data = yaml.safe_load(file)
+
+    # Navigate through nested dictionaries
+    d = data
+    for key in keys[:-1]:
+        d = d.setdefault(key, {})
+    d[keys[-1]] = new_value
+
+    with open(file_path, 'w') as file:
+        yaml.dump(data, file, default_flow_style=False)

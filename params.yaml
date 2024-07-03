@@ -1,25 +1,20 @@
-pad_sequences:
-  padding: "pre"
-
-to_categorical:
-  num_classes: 221
-
-LSTM:
-  units_lstm: 100
-
 Dense:
+  activation: softmax
   units_dense: 221
-  activation: "softmax"
-
 Embedding:
   input_dim: 221
-  output_dim: 100
   input_length: 39
-
+  output_dim: 100
+LSTM:
+  units_lstm: 100
 compile:
-  loss: "categorical_crossentropy"
-  optimizer: "adam"
-  metrics: ['accuracy']
-
+  loss: categorical_crossentropy
+  metrics:
+  - accuracy
+  optimizer: adam
 fit:
   epoch: 100
+pad_sequences:
+  padding: pre
+to_categorical:
+  num_classes: 221

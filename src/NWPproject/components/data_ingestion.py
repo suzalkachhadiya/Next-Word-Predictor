@@ -4,6 +4,7 @@ from tkinter import filedialog
 import shutil
 from NWPproject.entity.config_entity import DataIngestionConfig, DataValidationConfig
 from NWPproject.constants import *
+from NWPproject.utils.common import update_nested_yaml
 
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):
@@ -19,6 +20,9 @@ class DataIngestion:
             
         # Define the destination path
         destination_path = os.path.join(self.config.destination_folder, first_file)
+
+        update_nested_yaml(CONFIG_FILE_PATH, ['data_validation', 'Data_path'],destination_path)
+        update_nested_yaml(CONFIG_FILE_PATH, ['data_transformation', 'Data_path'],destination_path)
 
         try:
                 # Copy the file to the destination folder

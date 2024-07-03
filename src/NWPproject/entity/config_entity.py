@@ -19,7 +19,7 @@ class DataTransformationConfig:
     root_dir: Path
     Data_path: Path
     padding: str
-    num_classes: int
+    tokenizer_name: str
 
 @dataclass(frozen=True)
 class ModelTrainerConfig:
@@ -43,3 +43,7 @@ class ModelEvaluationConfig:
     model_path: Path
     array_path: Path
     metric_file_name: Path
+
+@dataclass(frozen=True)
+class PredictionConfig:
+    input_length:int

@@ -1,5 +1,7 @@
 import streamlit as st
 import os
+import shutil
+import subprocess
 from NWPproject.constants import *
 
 st.set_page_config(
@@ -13,6 +15,10 @@ st.header("Model Training", divider="rainbow")
 st.write("Upload a file containing texts.")
 # Create the upload folder if it doesn't exist
 if not os.path.exists(SAVED_FILE_PATH):
+    os.makedirs(SAVED_FILE_PATH)
+
+else:
+    shutil.rmtree(SAVED_FILE_PATH)
     os.makedirs(SAVED_FILE_PATH)
 
 uploaded_file = st.file_uploader("Choose a text file", type="txt")
@@ -32,6 +38,10 @@ if uploaded_file is not None:
             # Save the text file
             with open(save_path, "wb") as f:
                 f.write(uploaded_file.getbuffer())
+
+            subprocess.run(["python","main.py"])
+
+            st.write("Model training is completed.")
 
             # st.success(f"Text file saved as: {save_path}")
 

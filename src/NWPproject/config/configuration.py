@@ -1,6 +1,6 @@
 from NWPproject.constants import *
 from NWPproject.utils.common import read_yaml_file, create_directories
-from NWPproject.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig
+from NWPproject.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig, PredictionConfig
 
 class ConfigurationManager:
     def __init__(
@@ -45,7 +45,6 @@ class ConfigurationManager:
     def get_data_transformation_config(self) -> DataTransformationConfig:
         config = self.config.data_transformation
         padding_params=self.params.pad_sequences
-        num_classes_params=self.params.to_categorical
 
         create_directories([config.root_dir])
 
@@ -53,7 +52,7 @@ class ConfigurationManager:
             root_dir=config.root_dir,
             Data_path=config.Data_path,
             padding=padding_params.padding,
-            num_classes=num_classes_params.num_classes
+            tokenizer_name=config.tokenizer_name
         )
 
         return data_transformation_config
@@ -104,3 +103,13 @@ class ConfigurationManager:
         )
 
         return model_evaluation_config
+    
+    def get_prediction_config(self) -> PredictionConfig:
+        # config = self.config.prediction
+        input_length_params = self.params.Embedding
+
+        prediction_config = PredictionConfig(
+            input_length = input_length_params.input_length  
+        )
+
+        return prediction_config
