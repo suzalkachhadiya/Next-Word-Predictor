@@ -56,6 +56,7 @@ Our next word predictor is designed to significantly boost your typing speed.
 <img style="width:49%; margin-top:10px;" src="./assets/1.png">
 <img style="width:49%; margin-top:10px;" src="./assets/2.png">
 <img style="width:49%; margin-top:10px;" src="./assets/3.png">
+</div>
 
 ## How to Start Project
 
@@ -98,9 +99,9 @@ Follow these steps to get started with the project:
 
 ## Contact Us
 
-To learn more about our system and how it can help to reduce cost, please reach out:
+To learn more about, please reach out:
 
-📧 suzalkachhadiya@gmail.com
+📧 suzalkachhadiya111@gmail.com
 
 ## License
 
