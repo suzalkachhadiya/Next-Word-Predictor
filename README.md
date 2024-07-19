@@ -93,7 +93,7 @@ Follow these steps to get started with the project:
 
 7. **Run the Streamlit App:**
    ```bash
-   streamlit run Home.py
+   streamlit run NWP.py
    ```
    This command will start the Streamlit app.
 
